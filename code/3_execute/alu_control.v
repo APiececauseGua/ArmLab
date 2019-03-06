@@ -11,11 +11,11 @@ module alu_control(
     begin
         full_control <= {ALUOp,opcode};
         casex (full_control)
-            {2'b00,`VAR}: begin
+            {2'b00,11'bXXXXXXXXXXX}: begin
                 ALU_control <= `ALU_ADD;
             end
-            {2'bX1,`VAR}: begin
-               ALU_control <= `ALU_PIB;
+            {2'bX1,11'bXXXXXXXXXXX}: begin
+               ALU_control <= `ALU_PASS;
             end
             {2'b1X,`ADD}: begin
                ALU_control <= `ALU_ADD;
