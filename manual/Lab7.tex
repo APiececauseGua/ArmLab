@@ -18,24 +18,19 @@
 }
 
 
-\author{your names}
-\title{Lab title}
+\author{Jiason Zhou and Jon Johnston}
+\title{Lab 7: ALU and ALU Control}
 
 \begin{document}
 \maketitle
 
 \section{Executive Summary}
-The Executive Summary section should be a single concise paragraph that describes the following items.  Please note that this should be a paragraph, not an itemized list like I have below.  The list is just to tell you what I'm looking for...it is not there for you to fill it in on your lab report.  See the Lab 1 Example Report.pdf on Canvas to see a good example of what I'm looking for.
-\begin{enumerate}
-	\item The goal of the lab
-	\item What modules you created and what they do.  This should describe how the modules function and how they fit into the overall processor that we are building.  For instance, for Lab 1, you will want to describe the operation of the register and the fact that it is used to store the program counter, which is used to keep track of which instruction to execute next.
-	\item Whether your lab was successful.  If not successful, please state what is not currently working.
-\end{enumerate}	
-
+The purpose of this lab is to design and simulate an ALU and an ALU Control. The ALU Control interprets the opcode and ALUOp signals, using them to generate a four-bit control singal that is sent to the ALU. The ALU itself does arithmetic and logic operations for the computer based on the control signal it receives. After running the test benches for the two modules, they generated the expected outputs, so the lab was successful.
 \section{Test Report}
-To verify operation of this/these module(s), this lab requires N test bench(es).  (You can just copy this statement and fill it in with the correct number of test benches)
+Verifying the operation of these modules required the use of two test benches, one for each of the modules.
 \begin{enumerate}
-	\item Register Test Bench
+	\item ALU Control Test
+	\item ALU Test
 \end{enumerate}
 
 % This section should display the Expected Results Table and the Simulation Results for each test bench.  Make sure to label each figure correctly.  Please put them in the order of ERT1, SimResults1, ERT2, SimResults2 so that I can easily compare the ERT and Simulation Results.  To force the figures to be positioned correctly, add the float package (at the top of this file) and use the [H] after {figure} as I did below.  Also, if the ERT is on one page and the Simulation Results are on the next page, you can use a pagebreak as I did below so that the ERT goes to the next page also.
