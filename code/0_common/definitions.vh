@@ -1,4 +1,3 @@
-25 lines (21 sloc) 710 Bytes
 `timescale 1ns / 1ps
 `define CYCLE 10
 `define WORD  64
