@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % new way of doing eps files
+\usepackage{listings} % nice code layout
+\usepackage[usenames]{color} % color
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{graphgray}{gray}{0.7}
+\definecolor{ans}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+% \Verilog{title}{label}{file}
+\newcommand{\Verilog}[3]{
+  \lstset{language=Verilog}
+  \lstset{backgroundcolor=\color{listinggray},rulecolor=\color{blue}}
+  \lstset{linewidth=\textwidth}
+  \lstset{commentstyle=\textit, stringstyle=\upshape,showspaces=false}
+  \lstset{frame=tb}
+  \lstinputlisting[caption={#1},label={#2}]{#3}
+}
+
+
+\author{Justin Roessler}
+\title{Lab 1}
+
+\begin{document}
+\maketitle
+
+\section{Executive Summary}
+The purpose of this lab is to learn how to use verilog and how the clock edge and reset effects the results of q when changing d in a D flip flop. Different cases were added of different time lengths to show that q is only updated on the positive edge of the clock cycle. The Register module is set up to set q to 0 when reset is set, otherwise q is equal to d on a positive clock edge. The lab was successful and demonstrated the significance of being aware of clock cylces. If we wanted to set q to 6 when d is 6, we must let d be set long enough for a positive clock edge to occur so q will be set to d.
+
+
+\section{Test Report}
+To verify operation of this/these module(s), this lab requires 1 test bench.
+\begin{enumerate}
+	\item Register Test Bench
+\end{enumerate}
+
+\subsection{Register Test Bench}
+The register test bench contains:
+\begin{enumerate}
+	\item Inputs
+	\begin{enumerate}
+		\item clk - the oscillator that is the clock signal on a wire
+		\item reset - a register that always sets Q to 0 when set
+		\item D - a register that is a 64 bit number
+	\end{enumerate}	
+	\item Outputs
+	\begin{enumerate}	
+		\item Q - a wire that is a 64 bit number and will equal D unless a reset is set
+	\end{enumerate}
+\end{enumerate} 
+The test bench tested the behavior of the program counter when it was fed different numbers for a differant amount of time. Much of the code and test bench was already prepared before the lab. However, several test cases were added to the test bench. One of the cases set d to 6 for one fifth of a clock cycle. Since d was set to 6 for less than a clock cylce, Q was never set to 6 because of the absense of a positive clock edge. Also D was set to 7 for 2 clock cycles. In this case, Q was set to 7 for two clock cycles as well. 
+
+Operation of the testbench is verified by comparing the Simulation Results with the Expected Results Table. This showed me the register module was operating as expected and the Program Counter was behaving as needed.
+
+\begin{figure}
+	\begin{center}
+		\caption{Expected Results Table of the register test.}\label{fig:ert_registertest}
+		\includegraphics[width=1.0\textwidth]{../images/ExpectedResultsTable1.png}
+	\end{center}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\caption{Timing diagram for the register test.}\label{fig:registertest}
+		\includegraphics[width=1.0\textwidth]{../images/ResultsofSimulation.png} 
+	\end{center}
+\end{figure}
+
+
+\pagebreak
+
+\section{Code Appendix}
+\Verilog{Verilog code for implementing a register.}{code:reg}{../code/1_fetch/register.v}
+\Verilog{Verilog code for testing a register.}{code:regtest}{../code/1_fetch/register_test.v}
+\end{document} 
