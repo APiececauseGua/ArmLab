@@ -14,3 +14,12 @@
 `define STUR 11'b11111000000
 `define ORR  11'b10101010000
 `define AND  11'b10001010000
+
+/*ALUcontorl*/
+
+`define AND 4'b0000
+`define AND 4'b0001
+`define AND 4'b0010
+`define AND 4'b0110
+`define AND 4'b0111
+`define AND 4'b1100
