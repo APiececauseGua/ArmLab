@@ -17,9 +17,9 @@
 
 /*ALUcontorl*/
 
-`define AND 4'b0000
-`define AND 4'b0001
-`define AND 4'b0010
-`define AND 4'b0110
-`define AND 4'b0111
-`define AND 4'b1100
+`define ALU_AND 4'b0000
+`define ALU_OR 4'b0001
+`define ALU_ADD 4'b0010
+`define ALU_SUB 4'b0110
+`define ALU_PIB 4'b0111
+`define ALU_NOR 4'b1100
