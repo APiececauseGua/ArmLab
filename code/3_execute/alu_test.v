@@ -23,6 +23,14 @@ module alu_test;
             alu_control <= `ALU_ADD; #10;
             alu_control <= `ALU_SUB; #10;
             alu_control <= `ALU_PASS; #10;
+            
+            a_in <= 23;
+            b_in <= 23;
+            alu_control <= `ALU_AND; #10;
+            alu_control <= `ALU_OR; #10;
+            alu_control <= `ALU_ADD; #10;
+            alu_control <= `ALU_SUB; #10;
+            alu_control <= `ALU_PASS; #10;
             $finish;
         end
     
