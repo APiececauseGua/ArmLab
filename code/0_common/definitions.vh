@@ -1,3 +1,4 @@
+25 lines (21 sloc) 710 Bytes
 `timescale 1ns / 1ps
 `define CYCLE 10
 `define WORD  64
@@ -21,5 +22,4 @@
 `define ALU_OR 4'b0001
 `define ALU_ADD 4'b0010
 `define ALU_SUB 4'b0110
-`define ALU_PIB 4'b0111
-`define ALU_NOR 4'b1100
+`define ALU_PASS 4'b0111
