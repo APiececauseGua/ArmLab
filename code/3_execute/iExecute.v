@@ -13,7 +13,7 @@ module iExecute(
     );
     
     wire [`WORD-1:0] mux_out;
-    wire [3:0]alu_ctrl_out;
+    wire [3:0] alu_ctrl_out;
     wire [`WORD-1:0] shift_result;
     
     mux MUX (
