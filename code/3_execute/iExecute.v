@@ -14,6 +14,7 @@ module iExecute(
     
     wire [`WORD-1:0] mux_out;
     wire alu_ctrl_out;
+    wire [`WORD-1:0] shift_result;
     
     mux MUX (
         .a_in(read_data2),
@@ -33,11 +34,14 @@ module iExecute(
         .ALUOp(alu_op),
         .opcode(opcode),
         .ALU_control(alu_ctrl_out));
+        
+        //shift sign extend left by 2 = *4 
+    assign shift_result = sign_extend*4;
     
     adder pc_adder(
-        .a_in(),
-        .b_in(),
-        .add_out()
+        .a_in(pc_in),
+        .b_in(shift_result),
+        .add_out(branch_target)
         );
 
 endmodule
