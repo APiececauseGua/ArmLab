@@ -41,6 +41,18 @@ module datapath;
                        .read_data1(read_data1),
                        .read_data2(read_data2),
                        .sign_extended(sign_extended));
+      iExecute  Execute_mod(
+                        [`WORD-1:0] pc_in,
+                        [`WORD-1:0] read_data1,
+                        [`WORD-1:0] read_data2,
+                        [`WORD-1:0] sign_extend,
+                        [10:0] opcode,
+                        [1:0]alu_op,
+                        alu_src,
+                        [`WORD-1:0] alu_result,
+                        zero,
+                        [`WORD-1:0] branch_target    
+                           );
     
     initial
     begin
@@ -55,7 +67,7 @@ module datapath;
        write_data = 1234; #50;
        write_data = 30; #10;
        write_data = 16; #6;
-               $finish;
+   $finish;
     end
   
 endmodule
