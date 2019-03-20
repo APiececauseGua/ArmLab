@@ -1,11 +1,11 @@
 `include "definitions.vh"
 
 module fetch #(parameter SIZE = 64)
-    (input [`WORD-1:0]  branch_target,
+    (input [`WORD-1:0]  branch_target, cur_pc,
     input pc_src, clk, reset,
     output [`INSTR_LEN-1:0] instruction);
     
-    wire [`WORD-1:0] cur_pc,new_pc, incremented_pc;
+    wire [`WORD-1:0] new_pc, incremented_pc;
     wire clkplus1;
     
     mux MUX (.a_in(incremented_pc), .b_in(branch_target), .control(pc_src), .mux_out(new_pc));

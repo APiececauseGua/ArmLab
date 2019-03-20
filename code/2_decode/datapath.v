@@ -3,13 +3,15 @@
 module datapath;
     
     reg reset, pc_src;
-    reg [`WORD-1:0] branch_target;
+    wire [`WORD-1:0] branch_target, cur_pc;
     wire [`INSTR_LEN-1:0] Instruction;
     reg [`WORD-1:0] write_data;
     wire uncond_branch, branch, mem_read, mem_to_reg, mem_write, ALU_src;
     wire clk, clkplus1, clkplus2, clkplus3, clkplus4, clkplus5, clkplus6;
     wire [1:0] ALU_op;
     wire [`WORD-1:0] read_data1, read_data2, sign_extended;
+    wire [`WORD-1:0] alu_result;
+    wire zero;
     
     //fetch takes 2ns to complete. So clk and clkplus1 are used in fetch
     oscillator r_clk(.clk(clk));
@@ -25,41 +27,42 @@ module datapath;
                  .reset(reset), 
                  .branch_target(branch_target), 
                  .pc_src(pc_src), 
-                 .instruction(Instruction));
+                 .instruction(Instruction),
+                 .cur_pc(cur_pc));
                  
-    iDecode decode_mod(.write_data(write_data),
-                       .Instruction(Instruction),
-                       .uncond_branch(uncond_branch),
-                       .branch(branch),
-                       .mem_read(mem_read),
-                       .mem_to_reg(mem_to_reg),
-                       .mem_write(mem_write),
-                       .ALU_src(ALU_src),
-                       .read_clk(clkplus3),
-                       .write_clk(clkplus6),
-                       .ALU_op(ALU_op),
-                       .read_data1(read_data1),
-                       .read_data2(read_data2),
-                       .sign_extended(sign_extended));
-      iExecute  Execute_mod(
-                        [`WORD-1:0] pc_in,
-                        [`WORD-1:0] read_data1,
-                        [`WORD-1:0] read_data2,
-                        [`WORD-1:0] sign_extend,
-                        [10:0] opcode,
-                        [1:0]alu_op,
-                        alu_src,
-                        [`WORD-1:0] alu_result,
-                        zero,
-                        [`WORD-1:0] branch_target    
-                           );
-    
+    iDecode decode_mod(
+                .write_data(write_data),
+                .Instruction(Instruction),
+                .uncond_branch(uncond_branch),
+                .branch(branch),
+                .mem_read(mem_read),
+                .mem_to_reg(mem_to_reg),
+                .mem_write(mem_write),
+                .ALU_src(ALU_src),
+                .read_clk(clkplus3),
+                .write_clk(clkplus6),
+                .ALU_op(ALU_op),
+                .read_data1(read_data1),
+                .read_data2(read_data2),
+                .sign_extended(sign_extended));
+                
+    iExecute execute_mod(
+                .pc_in(cur_pc),
+                .read_data1(read_data1),
+                .read_data2(read_data2),
+                .sign_extend(sign_extended),
+                .opcode(Instruction[31:21]),
+                .alu_op(ALU_op),
+                .alu_src(ALU_src),
+                .alu_result(alu_result),
+                .zero(zero),
+                .branch_target(branch_target));
+>>>>>>> 314f1c74c611c9caddda06f730d7ea5fa145db6e
     initial
     begin
        reset = 1;
        pc_src= 0;
-       write_data = 20;
-       branch_target= 20;#10;
+       write_data = 20;#10;
        reset = 0;
        write_data = 20;#10;
        write_data = 30;#10;
