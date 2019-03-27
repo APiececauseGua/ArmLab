@@ -19,3 +19,22 @@ module iMemory_test;
             .a(read_clk),
             .a_delayed(write_clk)
             );
+            
+    iMemory IM(
+            .read_clk(read_clk),
+            .write_clk(write_clk),
+            .address(address),
+            .write_data(write_data),
+            .mem_read(mem_read),
+            .mem_write(mem_write),
+            .zero(zero),
+            .branch(branch),
+            .uncondbranch(uncondbranch),
+            .read_data(read_data),
+            .pc_src(pc_src));
+            
+        initial 
+            begin   
+            //memread memwrite
+    
+endmodule

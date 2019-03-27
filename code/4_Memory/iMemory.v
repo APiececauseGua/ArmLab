@@ -1,3 +1,4 @@
+`include "definitions.vh"
 module iMemory(
             input read_clk, write_clk,
             input uncondbranch,
