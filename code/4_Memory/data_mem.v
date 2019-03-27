@@ -12,7 +12,7 @@ module data_mem(
         if(MemRead)
             read_data <= ramf[address/8];
         else
-            read_data <= 1'bZ;
+            read_data <= 64'dZ;
     end
       
     always @(posedge write_clk)
