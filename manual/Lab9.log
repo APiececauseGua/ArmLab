@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2019.3.27)  27 MAR 2019 14:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2019.3.27)  27 MAR 2019 14:08
 entering extended mode
-**./Lab8.tex
-(Lab8.tex
+**./Lab9.tex
+(Lab9.tex
 LaTeX2e <2017-04-15>
 Babel <3.15> and hyphenation patterns for 76 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -87,8 +87,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@floatcapt=\box29
 )
 Package color Info: Redefining color blue on input line 9.
- (Lab8.aux)
-\openout1 = `Lab8.aux'.
+ (Lab9.aux)
+\openout1 = `Lab9.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
@@ -175,23 +175,100 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 25.
+ [1
 
-! I can't write on file `Lab8.pdf'.
-Please type another file name for output
-! Emergency stop.
-<to be read again> 
-                   \endgroup \set@typeset@protect 
-l.37 
-     
-*** (job aborted, file error in nonstop mode)
+{C:/Users/JohnstonJ.ECS/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<../images/DatapathExpected9.png, id=9, 1078.78032pt x 316.93407pt>
+File: ../images/DatapathExpected9.png Graphic file (type png)
+<use ../images/DatapathExpected9.png>
+Package pdftex.def Info: ../images/DatapathExpected9.png  used on input line 43
+.
+(pdftex.def)             Requested size: 345.0pt x 101.3581pt.
+<../images/DatapathSimulation.png, id=11, 1047.915pt x 323.70938pt>
+File: ../images/DatapathSimulation.png Graphic file (type png)
+<use ../images/DatapathSimulation.png>
+Package pdftex.def Info: ../images/DatapathSimulation.png  used on input line 5
+0.
+(pdftex.def)             Requested size: 345.0pt x 106.57251pt.
 
- 
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+(../code/2_decode/datapath.v
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 6.
+
+Overfull \hbox (93.00446pt too wide) in paragraph at lines 9--10
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (93.00446pt too wide) in paragraph at lines 10--11
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (9.0036pt too wide) in paragraph at lines 12--13
+[][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (87.0044pt too wide) in paragraph at lines 16--17
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[2 <../images/DatapathExpected9.png> <../images/DatapathSimulation.png>]
+Overfull \hbox (51.00403pt too wide) in paragraph at lines 19--20
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (51.00403pt too wide) in paragraph at lines 20--21
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (51.00403pt too wide) in paragraph at lines 21--22
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (51.00403pt too wide) in paragraph at lines 22--23
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (51.00403pt too wide) in paragraph at lines 23--26
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[3]) [4] (Lab9.aux) ) 
 Here is how much of TeX's memory you used:
- 2719 strings out of 493308
- 39278 string characters out of 3138744
- 98075 words of memory out of 3000000
- 6265 multiletter control sequences out of 15000+200000
- 7280 words of font info for 26 fonts, out of 3000000 for 9000
+ 3122 strings out of 493308
+ 45261 string characters out of 3138744
+ 144735 words of memory out of 3000000
+ 6642 multiletter control sequences out of 15000+200000
+ 7934 words of font info for 28 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,32p,569b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 41i,6n,43p,404b,1635s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Lab9.pdf (4 pages, 154096 bytes).
+PDF statistics:
+ 48 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+
