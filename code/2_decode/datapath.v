@@ -57,8 +57,7 @@ module datapath;
                 .alu_result(alu_result),
                 .zero(zero),
                 .branch_target(branch_target));
->>>>>>> 314f1c74c611c9caddda06f730d7ea5fa145db6e
-    initial
+initial
     begin
        reset = 1;
        pc_src= 0;
