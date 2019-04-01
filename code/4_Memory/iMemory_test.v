@@ -7,9 +7,9 @@ module iMemory_test;
     reg [`WORD - 1:0] write_data;
     reg mem_read;
     reg mem_write;
-    wire zero;
-    wire branch;
-    wire uncondbranch;
+    reg zero;
+    reg branch;
+    reg uncondbranch;
     wire [`WORD - 1:0] read_data;
     wire pc_src;
     
@@ -36,5 +36,48 @@ module iMemory_test;
         initial 
             begin   
             //memread memwrite
-    
+            
+            
+            //read data from address
+            mem_write = 0;
+            mem_read = 1;
+            address <= `WORD'd0; #10;
+            address <= `WORD'd3; #10;
+            
+            //write data
+            mem_write = 1;
+            address <= `WORD'd3;
+            write_data <= `WORD'd100; #10;
+            
+            //read again to check
+            mem_write = 0;
+            mem_read = 1;
+            address <= `WORD'd3; #10;
+            
+            //branching test
+            branch = 1;
+            zero = 0; 
+            uncondbranch = 0; #10;
+            uncondbranch = 1; #10;
+            
+            branch = 0;
+            zero = 0; 
+            uncondbranch = 0; #10;
+            uncondbranch = 1; #10;
+            
+            branch = 0;
+            zero = 1; 
+            uncondbranch = 0; #10;
+            uncondbranch = 1; #10;
+            
+              
+            branch = 1;
+            zero = 1; #10;
+            uncondbranch = 0; #10;
+            uncondbranch = 1; #10;
+            
+            
+
+            $finish;
+        end
 endmodule

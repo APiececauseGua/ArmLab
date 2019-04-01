@@ -3,8 +3,8 @@ module iMemory(
             input read_clk, write_clk,
             input uncondbranch,
             input branch,  
-            input MemRead, 
-            input MemWrite, 
+            input mem_read, 
+            input mem_write, 
             input zero,
             input [`WORD-1:0] address,
             input [`WORD-1:0] write_data,
@@ -18,8 +18,8 @@ module iMemory(
             
         data_mem DM(.read_clk(read_clk), 
                     .write_clk(write_clk), 
-                    .MemWrite(MemWrite), 
-                    .MemRead(MemRead),
+                    .mem_write(mem_write), 
+                    .mem_read(mem_read),
                     .write_data(write_data), 
                     .address(address),
                     .read_data(read_data));

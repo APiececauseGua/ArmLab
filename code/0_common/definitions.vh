@@ -2,7 +2,7 @@
 `define CYCLE 10
 `define WORD  64
 `define INSTR_LEN 32
-`define DMEMFILE  "H:/ELC3338/Spring2018/potter/ARM-Lab/testfiles/ramData.data"
+`define DMEMFILE  "H:/ELC3338/Team9/ARM-Lab_Spring2019_S1_P2_Team9/testfiles/ramData.data"
 `define IMEMFILE  "H:/ELC3338/Team9/ARM-Lab_Spring2019_S1_P2_Team9/testfiles/instrData.data"
 `define RMEMFILE  "H:/ELC3338/Team9/ARM-Lab_Spring2019_S1_P2_Team9/testfiles/regData.data"
 
