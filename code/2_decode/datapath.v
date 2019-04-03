@@ -59,9 +59,9 @@ module datapath;
                 
     iMemory memory_mod(
                 .read_clk(clk),
-                .write_clk(clkplus5),
+                .write_clk(clkplus2),
                 .address(alu_result),
-                .write_data(write_data),
+                .write_data(read_data2),
                 .mem_read(mem_read),
                 .mem_write(mem_write),
                 .zero(zero),
