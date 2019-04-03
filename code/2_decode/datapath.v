@@ -2,16 +2,15 @@
 
 module datapath;
     
-    reg reset, pc_src, uncondbranch;
+    reg reset, pc_src;
     wire [`WORD-1:0] branch_target, cur_pc;
     wire [`INSTR_LEN-1:0] Instruction;
-    reg [`WORD-1:0] write_data;
     wire uncond_branch, branch, mem_read, mem_to_reg, mem_write, ALU_src;
     wire clk, clkplus1, clkplus2, clkplus3, clkplus4, clkplus5, clkplus6;
     wire [1:0] ALU_op;
-    wire [`WORD-1:0] read_data, read_data1, read_data2, sign_extended;
+    wire [`WORD-1:0] read_data, read_data1, read_data2, write_data, sign_extended;
     wire [`WORD-1:0] alu_result;
-    wire zero;
+    wire zero, pc_2;
     
     //fetch takes 2ns to complete. So clk and clkplus1 are used in fetch
     oscillator r_clk(.clk(clk));
@@ -23,7 +22,7 @@ module datapath;
     delay #(.DELAYAMT(6)) ClkPlus6(.a(clk), .a_delayed(clkplus6));
 
     
-    fetch iFetch(.clk(clk), 
+    fetch fetch_mod(.clk(clk), 
                  .reset(reset), 
                  .branch_target(branch_target), 
                  .pc_src(pc_src), 
@@ -58,35 +57,37 @@ module datapath;
                 .zero(zero),
                 .branch_target(branch_target));
                 
-    iMemory IM(
-                .read_clk(read_clk),
-                .write_clk(write_clk),
+    iMemory memory_mod(
+                .read_clk(clk),
+                .write_clk(clkplus5),
                 .address(alu_result),
                 .write_data(write_data),
                 .mem_read(mem_read),
                 .mem_write(mem_write),
                 .zero(zero),
                 .branch(branch),
-                .uncondbranch(uncondbranch),
+                .uncondbranch(uncond_branch),
                 .read_data(read_data),
-                .pc_src(pc_src));
+                .pc_src(pc_2));
                 
-    iWrite_back(.read_data(read_data),
+    iWrite_back writeback_m(.read_data(read_data),
                .alu_result(alu_result), 
                .MemtoReg(mem_to_reg), 
                .write_data(write_data));
+                              
 initial
     begin
-       reset = 1;
-       pc_src= 0;
-       write_data = 20;#10;
-       reset = 0;
-       write_data = 20;#10;
-       write_data = 30;#10;
-       write_data = 0;#10;
-       write_data = 1234; #50;
-       write_data = 30; #10;
-       write_data = 16; #6;
+       reset = 1; 
+       pc_src = 0; #10
+//       write_data = 20;;
+       reset = 0; #100
+//       write_data = 20;#10;
+//       write_data = 30;#10;
+//       write_data = 0;#10;
+//       write_data = 1234; #50;
+//       write_data = 30; #10;
+//       write_data = 16; #6;
+        
    $finish;
     end
   
