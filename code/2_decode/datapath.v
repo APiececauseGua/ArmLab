@@ -2,14 +2,14 @@
 
 module datapath;
     
-    reg reset, pc_src;
+    reg reset, pc_src, uncondbranch;
     wire [`WORD-1:0] branch_target, cur_pc;
     wire [`INSTR_LEN-1:0] Instruction;
     reg [`WORD-1:0] write_data;
     wire uncond_branch, branch, mem_read, mem_to_reg, mem_write, ALU_src;
     wire clk, clkplus1, clkplus2, clkplus3, clkplus4, clkplus5, clkplus6;
     wire [1:0] ALU_op;
-    wire [`WORD-1:0] read_data1, read_data2, sign_extended;
+    wire [`WORD-1:0] read_data, read_data1, read_data2, sign_extended;
     wire [`WORD-1:0] alu_result;
     wire zero;
     
@@ -57,6 +57,24 @@ module datapath;
                 .alu_result(alu_result),
                 .zero(zero),
                 .branch_target(branch_target));
+                
+    iMemory IM(
+                .read_clk(read_clk),
+                .write_clk(write_clk),
+                .address(alu_result),
+                .write_data(write_data),
+                .mem_read(mem_read),
+                .mem_write(mem_write),
+                .zero(zero),
+                .branch(branch),
+                .uncondbranch(uncondbranch),
+                .read_data(read_data),
+                .pc_src(pc_src));
+                
+    iWrite_back(.read_data(read_data),
+               .alu_result(alu_result), 
+               .MemtoReg(mem_to_reg), 
+               .write_data(write_data));
 initial
     begin
        reset = 1;
