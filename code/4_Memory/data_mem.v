@@ -9,15 +9,15 @@ module data_mem(
     
     always @(posedge im_clk)
     begin
-        if(mem_read)
+        if(mem_read || mem_write)
+            begin
+            if(mem_read)
             read_data <= ramf[alu_result/8];
-//        else
-//            read_data <= 64'dZ;
-//    end      
-//    always @(negedge write_clk)
-//    begin
-        else if(mem_write)
-           ramf[alu_result] <= read_data2; 
+            if(mem_write)
+            ramf[alu_result] <= read_data2;
+            end
+        else
+            read_data <= 64'bZ;
     end
     
     initial

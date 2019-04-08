@@ -79,7 +79,7 @@ initial
     begin
        reset = 1; 
        pc_src = 0; #10
-       reset = 0; #100
+       reset = 0; #120
 //       write_data = 20;#10;
 //       write_data = 30;#10;
 //       write_data = 0;#10;
