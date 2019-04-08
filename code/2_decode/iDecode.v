@@ -3,8 +3,8 @@
 module iDecode(
     input [`WORD-1:0] write_data,
     input [`INSTR_LEN-1:0] Instruction,
-    input wire  read_clk, write_clk,
-    output uncond_branch, branch, mem_read, mem_to_reg, mem_write, ALU_src,
+    input read_clk, write_clk,
+    output uncond_branch, branch, mem_read, mem_to_reg, mem_write, ALU_src, 
     output [1:0] ALU_op,
     output reg [10:0] opcode,
     output [`WORD-1:0] read_data1, read_data2, sign_extended
