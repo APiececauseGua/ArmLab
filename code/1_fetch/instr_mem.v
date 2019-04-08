@@ -13,7 +13,7 @@ module instr_mem#(
     reg[`INSTR_LEN - 1:0] imem [SIZE-1:0];
     
     // Add code here to output the correct instruction
-    always @(posedge(clk))
+    always @(posedge clk)
     begin
         instruction <= imem[address/4];
     end
