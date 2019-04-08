@@ -77,9 +77,9 @@ module datapath;
 initial
     begin
        reset = 1; 
-#5
+                  pc_src = 0;  #10 
        reset = 0;
-              pc_src = 0;  #100
+   #100
 //       write_data = 20;#10;
 //       write_data = 30;#10;
 //       write_data = 0;#10;
