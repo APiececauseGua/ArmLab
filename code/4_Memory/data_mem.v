@@ -18,6 +18,8 @@ module data_mem(
             end
         else
             read_data <= 64'bZ;
+        end
+        
     initial
         $readmemb(`DMEMFILE, ramf);
 endmodule
