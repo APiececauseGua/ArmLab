@@ -1,24 +1,24 @@
 `include "definitions.vh"
 
 module data_mem(
-    input read_clk, write_clk, mem_write, mem_read,
-    input [`WORD-1:0] write_data, address,
+    input im_clk, mem_write, mem_read,
+    input [`WORD-1:0] read_data2, alu_result,
     output reg [`WORD-1:0] read_data);
 
     reg [`WORD-1:0] ramf [31:0];
     
-    always @(posedge read_clk)
+    always @(posedge im_clk)
     begin
         if(mem_read)
-            read_data <= ramf[address];
-        else
-            read_data <= 64'dZ;
-    end
+            read_data <= ramf[alu_result/8];
+//        else
+//            read_data <= 64'dZ;
+//    end
       
-    always @(posedge write_clk)
-    begin
-        if(mem_write)
-           ramf[address] <= write_data; 
+//    always @(negedge write_clk)
+//    begin
+        else if(mem_write)
+           ramf[alu_result] <= read_data2; 
     end
     
     initial

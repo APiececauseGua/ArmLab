@@ -10,8 +10,9 @@ module regfile(
     
     always @(posedge read_clk)
     begin
-        read_data1 <= rmem[read_register1];
-        read_data2 <= rmem[read_register2];
+        read_data1  <= rmem[read_register1];
+        read_data2  <= rmem[read_register2];
+
     end
       
     always @(posedge write_clk)

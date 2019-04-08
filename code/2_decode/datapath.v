@@ -6,23 +6,24 @@ module datapath;
     wire [`WORD-1:0] branch_target, cur_pc;
     wire [`INSTR_LEN-1:0] Instruction;
     wire uncond_branch, branch, mem_read, mem_to_reg, mem_write, ALU_src;
-    wire clk, clkplus1, clkplus2, clkplus3, clkplus4, clkplus5, clkplus6;
+    wire clk, fetch_clk, idecode_clk, im_clk, wb_clk;//clkplus1, clkplus2, clkplus3, clkplus4, clkplus5, clkplus6;
     wire [1:0] ALU_op;
     wire [`WORD-1:0] read_data, read_data1, read_data2, write_data, sign_extended;
     wire [`WORD-1:0] alu_result;
     wire zero, pc_2;
     
     //fetch takes 2ns to complete. So clk and clkplus1 are used in fetch
-    oscillator r_clk(.clk(clk));
-    delay ClkPlus1(.a(clk), .a_delayed(clkplus1));
-    delay #(.DELAYAMT(2)) ClkPlus2(.a(clk), .a_delayed(clkplus2));
-    delay #(.DELAYAMT(3)) ClkPlus3(.a(clk), .a_delayed(clkplus3));
-    delay #(.DELAYAMT(4)) ClkPlus4(.a(clk), .a_delayed(clkplus4));
-    delay #(.DELAYAMT(5)) ClkPlus5(.a(clk), .a_delayed(clkplus5));
-    delay #(.DELAYAMT(6)) ClkPlus6(.a(clk), .a_delayed(clkplus6));
+    oscillator r_clk(.clk(clk));  
+    delay ClkPlus1(.a(clk), .a_delayed(fetch_clk)); 
+    delay #(.DELAYAMT(2)) ClkPlus2(.a(clk), .a_delayed(idecode_clk));   //write clk
+//    delay #(.DELAYAMT(3)) ClkPlus3(.a(clk), .a_delayed(clkplus3));  ///
+//    delay #(.DELAYAMT(4)) ClkPlus4(.a(clk), .a_delayed(clkplus4));
+//    delay #(.DELAYAMT(5)) ClkPlus5(.a(clk), .a_delayed(clkplus5));
+    delay #(.DELAYAMT(8)) ClkPlus6(.a(clk), .a_delayed(im_clk));   // 
+    delay #(.DELAYAMT(9)) ClkPlus8(.a(clk), .a_delayed(wb_clk));   // 
 
     
-    fetch fetch_mod(.clk(clk), 
+    fetch fetch_mod(.clk(fetch_clk), 
                  .reset(reset), 
                  .branch_target(branch_target), 
                  .pc_src(pc_src), 
@@ -38,8 +39,8 @@ module datapath;
                 .mem_to_reg(mem_to_reg),
                 .mem_write(mem_write),
                 .ALU_src(ALU_src),
-                .read_clk(clkplus3),
-                .write_clk(clkplus6),
+                .read_clk(idecode_clk),
+                .write_clk(wb_clk),
                 .ALU_op(ALU_op),
                 .read_data1(read_data1),
                 .read_data2(read_data2),
@@ -58,10 +59,9 @@ module datapath;
                 .branch_target(branch_target));
                 
     iMemory memory_mod(
-                .read_clk(clk),
-                .write_clk(clkplus5),
-                .address(alu_result),
-                .write_data(write_data),
+                .im_clk(im_clk),
+                .alu_result(alu_result),
+                .read_data2(read_data2),
                 .mem_read(mem_read),
                 .mem_write(mem_write),
                 .zero(zero),
@@ -79,7 +79,6 @@ initial
     begin
        reset = 1; 
        pc_src = 0; #10
-//       write_data = 20;;
        reset = 0; #100
 //       write_data = 20;#10;
 //       write_data = 30;#10;

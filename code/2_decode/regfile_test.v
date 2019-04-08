@@ -31,13 +31,14 @@ module regfile_test;
         RegWrite = 1;
         write_register = 0;
         write_data = 4783;
-        read_register1 = 1;
-        read_register2 = 3; #10;
-        read_register1 = 29;
-        read_register2 = 31; #10;
-        read_register1 = 15;
+        read_register1 = 22;
+        read_register2 = 4; #10;
+        read_register1 = 19;
         read_register2 = 9; #10;
-
+        read_register1 = 20;
+        read_register2 = 10; #10;
+        read_register1 = 22;
+        read_register2 = 11; #10;
         write_register = 13; #10;
         read_register1 = 13; #10;
         
@@ -46,6 +47,6 @@ module regfile_test;
         
         write_register = 13; #10;
         read_register1 = 13; #10;
-        
+        $finish;
     end
 endmodule
