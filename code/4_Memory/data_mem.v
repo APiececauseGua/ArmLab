@@ -11,15 +11,16 @@ module data_mem(
     begin
         if(mem_read)
             read_data <= ramf[alu_result/8];
-//        else
-//            read_data <= 64'dZ;
-//    end      
+
+      
 //    always @(negedge write_clk)
 //    begin
         else if(mem_write)
            ramf[alu_result] <= read_data2; 
+        else
+            read_data <= 64'dZ;
     end
-    
+
     initial
         $readmemb(`DMEMFILE, ramf);
 endmodule
