@@ -14,16 +14,15 @@ module datapath;
     
     //fetch takes 2ns to complete. So clk and clkplus1 are used in fetch
     oscillator r_clk(.clk(clk));  
-    delay #(.DELAYAMT(5)) ClkPlus1(.a(clk), .a_delayed(fetch_clk)); 
-    delay #(.DELAYAMT(6)) ClkPlus2(.a(clk), .a_delayed(idecode_clk));   //write clk
+    delay #(.DELAYAMT(2)) ClkPlus2(.a(clk), .a_delayed(idecode_clk));   //write clk
 //    delay #(.DELAYAMT(3)) ClkPlus3(.a(clk), .a_delayed(clkplus3));  ///
 //    delay #(.DELAYAMT(4)) ClkPlus4(.a(clk), .a_delayed(clkplus4));
 //    delay #(.DELAYAMT(5)) ClkPlus5(.a(clk), .a_delayed(clkplus5));
-    delay #(.DELAYAMT(8)) ClkPlus6(.a(clk), .a_delayed(im_clk));   // 
-    delay #(.DELAYAMT(9)) ClkPlus8(.a(clk), .a_delayed(wb_clk));   // 
+    delay #(.DELAYAMT(4)) ClkPlus6(.a(clk), .a_delayed(im_clk));   // 
+    delay #(.DELAYAMT(6)) ClkPlus8(.a(clk), .a_delayed(wb_clk));   // 
 
     
-    fetch fetch_mod(.clk(fetch_clk), 
+    fetch fetch_mod(.clk(clk), 
                  .reset(reset), 
                  .branch_target(branch_target), 
                  .pc_src(pc_src), 
