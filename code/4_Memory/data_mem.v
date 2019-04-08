@@ -13,8 +13,7 @@ module data_mem(
             read_data <= ramf[alu_result/8];
 //        else
 //            read_data <= 64'dZ;
-//    end
-      
+//    end      
 //    always @(negedge write_clk)
 //    begin
         else if(mem_write)
