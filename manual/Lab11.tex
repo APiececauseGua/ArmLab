@@ -25,7 +25,7 @@
 \maketitle
 
 \section{Executive Summary}
-This lab had three parts: creating the Write Back stage, nishing the complete datapath, and then testing the datapath with code that performs a simple division. For the Write Back stage, a new module did not have to be created, a mux was simply added to the current datapath module. The division test did not require a new module to be created either, machine code for the division simply had to be created and implemented. All three parts of the lab were successful.
+This lab had three parts: creating the Write Back stage, integrating it into the datapath, and then testing the datapath with code that performs a simple division. For the Write Back stage, a new module did not have to be created, a mux was simply added to the current datapath. However, an iWriteBack module was created to nest the mux for ease of reading. The division test did not require a new module to be created either, machine code for the division simply had to be created and implemented in the instruction memory file. The reg data and memory files also had to be edited to ensure correct operation. The division of 21 by 7 correctly produced the result of 3, demonstrating that all three parts of the lab were successful.
 
 \section{Test Report}
 To verify operation of these modules, this lab required two test benches. 

@@ -14,7 +14,7 @@ module data_mem(
             if(mem_read)
             read_data <= ramf[alu_result/8];
             if(mem_write)
-            ramf[alu_result] <= read_data2;
+            ramf[alu_result/8] <= read_data2;
             end
         else
             read_data <= 64'bZ;
