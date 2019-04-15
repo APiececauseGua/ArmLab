@@ -2,10 +2,13 @@
 
 module fetch #(parameter SIZE = 64)
     (input [`WORD-1:0]  branch_target, cur_pc,
-    input pc_src, clk, fetch_clk, reset,
+    input pc_src, clk, reset,
     output [`INSTR_LEN-1:0] instruction);
     
     wire [`WORD-1:0] new_pc, incremented_pc;
+    wire fetch_clk;
+    
+    delay #(.DELAYAMT(2)) Fetch_Delay(.a(clk), .a_delayed(fetch_clk));
     
     mux MUX (.a_in(incremented_pc), .b_in(branch_target), .control(pc_src), .mux_out(new_pc));
     register PC(.clk(clk), .reset(reset), .D(new_pc), .Q(cur_pc));
