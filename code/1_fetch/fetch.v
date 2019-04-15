@@ -1,8 +1,9 @@
 `include "definitions.vh"
 
 module fetch #(parameter SIZE = 64)
-    (input [`WORD-1:0]  branch_target, cur_pc,
+    (input [`WORD-1:0]  branch_target,
     input pc_src, clk, reset,
+    output [`INSTR_LEN-1:0] cur_pc,
     output [`INSTR_LEN-1:0] instruction);
     
     wire [`WORD-1:0] new_pc, incremented_pc;

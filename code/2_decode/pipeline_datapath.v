@@ -3,17 +3,18 @@
 module pipeline;
     
     reg reset;
-    wire [`INSTR_LEN-1:0] Instruction;
-    wire uncond_branch, branch, 
+    wire [`INSTR_LEN-1:0] instruction_if;
+    wire cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im, // cur_pc signals
+         uncond_branch, branch, 
          mem_read, mem_to_reg, 
          mem_write, ALU_src, clk, 
          fetch_clk, idecode_clk, 
-         im_clk, wb_clk;
+         im_clk, wb_clk,
+         zero, pc_src;
     wire [1:0] ALU_op;
     wire [`WORD-1:0] branch_target, cur_pc,
                      read_data, read_data1, read_data2, 
                      write_data, sign_extended, alu_result;
-    wire zero, pc_src;
     
     oscillator r_clk(.clk(clk));      //base clock
 //    delay #(.DELAYAMT(1)) ClkPlus3(.a(clk), 
@@ -31,12 +32,12 @@ module pipeline;
                 .reset(reset), 
                 .branch_target(branch_target), 
                 .pc_src(pc_src), 
-                .instruction(Instruction),
+                .instruction(instruction_if),
                 .cur_pc(cur_pc));
                  
     iDecode decode_mod(
                 .write_data(write_data),
-                .Instruction(Instruction),
+                .Instruction(instruction_if),
                 .uncond_branch(uncond_branch),
                 .branch(branch),
                 .mem_read(mem_read),
@@ -54,7 +55,7 @@ module pipeline;
 //                .read_data1(read_data1),
 //                .read_data2(read_data2),
 //                .sign_extend(sign_extended),
-//                .opcode(Instruction[31:21]),
+//                .opcode(instruction_if[31:21]),
 //                .alu_op(ALU_op),
 //                .alu_src(ALU_src),
 //                .alu_result(alu_result),
