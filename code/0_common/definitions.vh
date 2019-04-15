@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`define CYCLE 10
+`define CYCLE 4
 `define WORD  64
 `define INSTR_LEN 32
 `define DMEMFILE  "H:/ELC3338/Team9/ARM-Lab_Spring2019_S1_P2_Team9/testfiles/ramData.data"
