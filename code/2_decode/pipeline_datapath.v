@@ -9,10 +9,13 @@ module pipeline;
          mem_read_id, mem_read_ie, // mem_read signals
          mem_to_reg_id, mem_to_reg_ie, mem_to_reg_im, // mem_to_reg signals
          mem_write_id, mem_write_ie, //mem_write signals
+         reg_write_id, reg_write_ie, reg_write_im, reg_write_iw, // reg_write signals
          ALU_src_id,
          clk, fetch_clk, idecode_clk, im_clk, wb_clk, // clock signals
          zero_ie, pc_src;
     wire [1:0] ALU_op_id;
+    wire [4:0]
+         write_register_id, write_register_ie, write_register_im, write_register_iw;
     wire [`WORD-1:0]
          branch_target,
          cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im, // cur_pc signals
@@ -44,8 +47,8 @@ module pipeline;
                 .cur_pc_if(cur_pc_if),
                 .cur_pc_id(cur_pc_id),
                 .write_data(write_data_iw),
-                .write_register_iw(),
-                .write_register_id(),
+                .write_register_iw(write_register_iw),
+                .write_register_id(write_register_id),
                 .reg_write_iw(reg_write_iw),
                 .reg_write_id(reg_write_id),
                 .instruction_if(instruction_if),
