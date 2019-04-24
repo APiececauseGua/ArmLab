@@ -41,19 +41,25 @@ module pipeline;
                 .cur_pc_if(cur_pc_if));
                  
     iDecode decode_mod(
+                .cur_pc_if(cur_pc_if),
+                .cur_pc_id(cur_pc_id),
                 .write_data(write_data_iw),
-                .Instruction(instruction_if),
-                .uncond_branch(uncond_branch_id),
-                .branch(branch_id),
-                .mem_read(mem_read_id),
-                .mem_to_reg(mem_to_reg_id),
-                .mem_write(mem_write_id),
-                .ALU_src(ALU_src_id),
+                .write_register_iw(),
+                .write_register_id(),
+                .reg_write_iw(reg_write_iw),
+                .reg_write_id(reg_write_id),
+                .instruction_if(instruction_if),
+                .uncond_branch_id(uncond_branch_id),
+                .branch_id(branch_id),
+                .mem_read_id(mem_read_id),
+                .mem_to_reg_id(mem_to_reg_id),
+                .mem_write_id(mem_write_id),
+                .ALU_src_id(ALU_src_id),
                 .read_clk(clk),
-                .ALU_op(ALU_op_id),
-                .read_data1(read_data1_id),
-                .read_data2(read_data2_id),
-                .sign_extended(sign_extended_output_id));
+                .ALU_op_id(ALU_op_id),
+                .read_data1_id(read_data1_id),
+                .read_data2_id(read_data2_id),
+                .sign_extended_output_id(sign_extended_output_id));
                 
 //    iExecute execute_mod(
 //                .pc_in(cur_pc),
