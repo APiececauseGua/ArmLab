@@ -4,17 +4,22 @@ module pipeline;
     
     reg reset;
     wire [`INSTR_LEN-1:0] instruction_if;
-    wire cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im, // cur_pc signals
-         uncond_branch, branch, 
-         mem_read, mem_to_reg, 
-         mem_write, ALU_src, clk, 
-         fetch_clk, idecode_clk, 
-         im_clk, wb_clk,
-         zero, pc_src;
-    wire [1:0] ALU_op;
-    wire [`WORD-1:0] branch_target, cur_pc,
-                     read_data, read_data1, read_data2, 
-                     write_data, sign_extended, alu_result;
+    wire uncond_branch_id, uncond_branch_ie, // uncond_branch signals
+         branch_id, branch_ie, // branch signals
+         mem_read_id, mem_read_ie, // mem_read signals
+         mem_to_reg_id, mem_to_reg_ie, mem_to_reg_im, // mem_to_reg signals
+         mem_write_id, mem_write_ie, //mem_write signals
+         ALU_src_id,
+         clk, fetch_clk, idecode_clk, im_clk, wb_clk, // clock signals
+         zero_ie, pc_src;
+    wire [1:0] ALU_op_id;
+    wire [`WORD-1:0]
+         branch_target,
+         cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im, // cur_pc signals
+         read_data_im,
+         read_data1_id,
+         read_data2_id, read_data2_ie, 
+         write_data_iw, sign_extended_output_id, alu_result_ie;
     
     oscillator r_clk(.clk(clk));      //base clock
 //    delay #(.DELAYAMT(1)) ClkPlus3(.a(clk), 
@@ -32,29 +37,29 @@ module pipeline;
                 .reset(reset), 
                 .branch_target(branch_target), 
                 .pc_src(pc_src), 
-                .instruction(instruction_if),
-                .cur_pc(cur_pc));
+                .instruction_if(instruction_if),
+                .cur_pc_if(cur_pc_if));
                  
     iDecode decode_mod(
-                .write_data(write_data),
+                .write_data(write_data_iw),
                 .Instruction(instruction_if),
-                .uncond_branch(uncond_branch),
-                .branch(branch),
-                .mem_read(mem_read),
-                .mem_to_reg(mem_to_reg),
-                .mem_write(mem_write),
-                .ALU_src(ALU_src),
+                .uncond_branch(uncond_branch_id),
+                .branch(branch_id),
+                .mem_read(mem_read_id),
+                .mem_to_reg(mem_to_reg_id),
+                .mem_write(mem_write_id),
+                .ALU_src(ALU_src_id),
                 .read_clk(clk),
-                .ALU_op(ALU_op),
-                .read_data1(read_data1),
-                .read_data2(read_data2),
-                .sign_extended(sign_extended));
+                .ALU_op(ALU_op_id),
+                .read_data1(read_data1_id),
+                .read_data2(read_data2_id),
+                .sign_extended(sign_extended_output_id));
                 
 //    iExecute execute_mod(
 //                .pc_in(cur_pc),
 //                .read_data1(read_data1),
 //                .read_data2(read_data2),
-//                .sign_extend(sign_extended),
+//                .sign_extend(sign_extended_output_id),
 //                .opcode(instruction_if[31:21]),
 //                .alu_op(ALU_op),
 //                .alu_src(ALU_src),
