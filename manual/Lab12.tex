@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{graphicx} % new way of doing eps files
+\usepackage{listings} % nice code layout
+\usepackage[usenames]{color} % color
+\usepackage{float}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{graphgray}{gray}{0.7}
+\definecolor{ans}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+% \Verilog{title}{label}{file}
+\newcommand{\Verilog}[3]{
+  \lstset{language=Verilog}
+  \lstset{backgroundcolor=\color{listinggray},rulecolor=\color{blue}}
+  \lstset{linewidth=\textwidth}
+  \lstset{commentstyle=\textit, stringstyle=\upshape,showspaces=false}
+  \lstset{frame=tb}
+  \lstinputlisting[caption={#1},label={#2}]{#3}
+}
+
+
+\author{Jiasen Zhou, Jon Johnston}
+\title{Lab 12: Pipeline Fetch and Decode}
+
+\begin{document}
+\maketitle
+
+\section{Executive Summary}
+Fill.
+
+\section{Test Report}
+To verify operation of these modules, this lab required one test bench. 
+\begin{enumerate}
+	\item Pipeline Test Bench
+\end{enumerate}
+
+\subsection{Pipeline Test Bench}
+The Pipeline Test Bench contains:
+\begin{enumerate}
+	\item Inputs
+	\begin{enumerate}
+		\item Fill.
+	\end{enumerate}	
+	\item Outputs
+	\begin{enumerate}	
+		\item Fill.
+	\end{enumerate}
+\end{enumerate} 
+
+\pagebreak
+
+\begin{figure}
+	\begin{center}
+		\caption{Timing Diagram of the Pipeline test.}\label{fig:ert_pipelinetest}
+		\includegraphics[width=1.0\textwidth]{../images/Lab12_pipelined_datapath_simulation.PNG}
+	\end{center}
+\end{figure}
+
+
+\section{Code Appendix}
+% The code appendix should include the test bench code and module code for this lab.
+\Verilog{Verilog code for testing the pipelined datapath}{code:pipelinetest}{../code/2_decode/pipeline_datapath.v}
+
+\end{document} 
