@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2019.4.27)  27 APR 2019 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2019.4.27)  27 APR 2019 22:53
 entering extended mode
 **./Lab12.tex
 (Lab12.tex
@@ -175,19 +175,39 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 25.
- [1
 
-{C:/Users/JohnstonJ/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<../images/Lab12_pipelined_datapath_simulation.PNG, id=9, 743.02594pt x 492.339
-37pt>
+Overfull \hbox (21.25072pt too wide) in paragraph at lines 48--49
+[]\OT1/cmr/m/n/10 uncond[]branch[]id, branch[]id, mem[]read[]id, mem[]to[]reg[]
+id, mem[]write[]id,
+ []
+
+
+Overfull \hbox (38.73965pt too wide) in paragraph at lines 48--49
+\OT1/cmr/m/n/10 ALU[]src[]id, reg[]write[]id, ALU[]op[]id, op-code[]id, read[]d
+ata1[]id, read[]data2[]id,
+ []
+
+[1
+
+{C:/Users/ZHOUJ/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<../images/Lab12_pipelined_datapath_table.PNG, id=9, 1136.74687pt x 395.22656pt
+>
+File: ../images/Lab12_pipelined_datapath_table.PNG Graphic file (type png)
+<use ../images/Lab12_pipelined_datapath_table.PNG>
+Package pdftex.def Info: ../images/Lab12_pipelined_datapath_table.PNG  used on 
+input line 61.
+(pdftex.def)             Requested size: 345.0pt x 119.94989pt.
+<../images/Lab12_pipelined_datapath_simulation.PNG, id=11, 743.02594pt x 492.33
+937pt>
 File: ../images/Lab12_pipelined_datapath_simulation.PNG Graphic file (type png)
 
 <use ../images/Lab12_pipelined_datapath_simulation.PNG>
 Package pdftex.def Info: ../images/Lab12_pipelined_datapath_simulation.PNG  use
-d on input line 54.
+d on input line 66.
 (pdftex.def)             Requested size: 345.0pt x 228.60487pt.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+ [2 <../images/Lab12_pipelined_datapath_table.PNG> <../images/Lab12_pipelined_d
+atapath_simulation.PNG>] ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstla
+ng1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
@@ -208,7 +228,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 12.
- [2 <../images/Lab12_pipelined_datapath_simulation.PNG>] [3]
+ [3]
 Overfull \hbox (3.00354pt too wide) in paragraph at lines 72--73
 [][][][][][][][] 
  []
@@ -221,13 +241,13 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 78.
  [4]) [5] (Lab12.aux) ) 
 Here is how much of TeX's memory you used:
- 3137 strings out of 493308
- 45735 string characters out of 3138756
- 149495 words of memory out of 3000000
- 6652 multiletter control sequences out of 15000+200000
+ 3144 strings out of 493308
+ 45997 string characters out of 3138768
+ 145359 words of memory out of 3000000
+ 6658 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,43p,274b,1639s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,6n,43p,407b,1635s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
 12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -236,9 +256,9 @@ m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb>
-Output written on Lab12.pdf (5 pages, 161244 bytes).
+Output written on Lab12.pdf (5 pages, 190845 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
