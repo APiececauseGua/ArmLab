@@ -25,7 +25,7 @@
 \maketitle
 
 \section{Executive Summary}
-The goal of this lab was to pipeline the Fetch and Decode stages of the finished datapath. The Execute, Memory, and Writeback stages are commented out to isolate the Fetch and Decode stages of the datapath. The pipeline buffers between the stages are added so that the datapath stil operated correctly. The lab is successful, and the Fetch and Decode stages of the datapath are now pipelined.
+The goal of this lab was to pipeline the Fetch and Decode stages of the finished datapath. The Execute, Memory, and Writeback stages are commented out to isolate the Fetch and Decode stages of the datapath. The pipeline buffers between the stages are added so that the datapath stil operated correctly. Some additional registers are added to demonstrate the future operation of the pipeline. The lab is successful, and the Fetch and Decode stages of the datapath are now pipelined.
 
 \section{Test Report}
 To verify operation of these modules, this lab required one test bench. 
@@ -57,8 +57,13 @@ The Pipeline Test Bench contains:
 
 \begin{figure} [H]
 	\begin{center}
-		\caption{Expected table of the Pipeline test.}\label{fig:ert_pipelinetable}
+		\caption{Pipeline Buffer Table.}\label{fig:ert_pipelinetable}
 		\includegraphics[width=1.0\textwidth]{../images/Lab12_pipelined_datapath_table.PNG}
+	\end{center}
+
+	\begin{center}
+		\caption{Expected Results Table.}\label{fig:ert_pipelinetable}
+		\includegraphics[width=1.0\textwidth]{../images/Lab12_expected_results.PNG}
 	\end{center}
 
 	\begin{center}
