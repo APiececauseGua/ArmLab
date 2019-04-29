@@ -46,31 +46,31 @@ module pipeline;
         .reset(reset), 
         .branch_target(branch_target), 
         .pc_src(pc_src), 
-        .instruction_if(instruction_if),
-        .cur_pc_if(cur_pc_if));
+        .instruction(instruction_if),
+        .cur_pc(cur_pc_if));
         
     // Decode Stage
     iDecode decode_mod(
-        .cur_pc_if(cur_pc_if),
-        .cur_pc_id(cur_pc_id),
-        .write_data_iw(write_data_iw),
-        .write_register_iw(write_register_iw),
-        .write_register_id(write_register_id),
-        .reg_write_iw(reg_write_iw),
-        .reg_write_id(reg_write_id),
-        .instruction_if(instruction_if),
-        .uncond_branch_id(uncond_branch_id),
-        .branch_id(branch_id),
-        .mem_read_id(mem_read_id),
-        .mem_to_reg_id(mem_to_reg_id),
-        .mem_write_id(mem_write_id),
-        .ALU_src_id(ALU_src_id),
+        .cur_pc_in(cur_pc_if),
+        .cur_pc_out(cur_pc_id),
+        .write_data(write_data_iw),
+        .write_register_in(write_register_iw),
+        .write_register_out(write_register_id),
+        .reg_write_in(reg_write_iw),
+        .reg_write_out(reg_write_id),
+        .instruction(instruction_if),
+        .uncond_branch(uncond_branch_id),
+        .branch(branch_id),
+        .mem_read(mem_read_id),
+        .mem_to_reg(mem_to_reg_id),
+        .mem_write(mem_write_id),
+        .ALU_src(ALU_src_id),
         .write_clk(clk),
-        .ALU_op_id(ALU_op_id),
-        .read_data1_id(read_data1_id),
-        .read_data2_id(read_data2_id),
-        .sign_extended_output_id(sign_extended_output_id),
-        .opcode_id(opcode_id));
+        .ALU_op(ALU_op_id),
+        .read_data1(read_data1_id),
+        .read_data2(read_data2_id),
+        .sign_extended_output(sign_extended_output_id),
+        .opcode(opcode_id));
                 
     // iExecute Buffer Simulation
     always @(posedge clk)
