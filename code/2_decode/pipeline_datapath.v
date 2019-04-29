@@ -2,7 +2,7 @@
 
 module pipeline;
     
-    reg reset;
+    reg reset,pc_src;
     wire [`INSTR_LEN-1:0] instruction_if;
     wire uncond_branch_id, uncond_branch_ie,
          branch_id, branch_ie,
@@ -11,10 +11,10 @@ module pipeline;
          mem_write_id, mem_write_ie,
          reg_write_id, reg_write_ie,
          ALU_src_id, clk,
-         zero_ie;
+         zero_ie, mem_to_reg_im, pc_src_1;
          // Future 
-         /* pc_src,  
-         mem_to_reg_im, 
+         /*  
+          
          reg_write_im, reg_write_iw,*/
     wire [1:0] ALU_op_id;
     wire [4:0] write_register_id, write_register_ie;
@@ -22,19 +22,19 @@ module pipeline;
          /* write_register_im,
          write_register_iw*/
     wire [`WORD-1:0]
-         cur_pc_if, cur_pc_id,
+         cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im,
          read_data1_id,
          read_data2_id, read_data2_ie,
          sign_extended_output_id,
          alu_result_ie,
-         cur_pc_ie,
-         branch_target;
+         branch_target,
+         read_data_im;
          // Future
-         /* cur_pc_im, read_data_im,  write_data_iw*/
+         /*  write_data_iw*/
     wire [10:0] opcode_id;
     
     // Temporary Registers for Simulation
-    reg pc_src, reg_write_iw;
+    reg reg_write_iw;
     reg [4:0] write_register_iw;
     reg [`WORD-1:0] write_data_iw;
     
@@ -102,18 +102,22 @@ module pipeline;
         .zero(zero_ie),
         .branch_target(branch_target));
 
-//        Future Modules
-//    iMemory memory_mod(
-//        .im_clk(clk),
-//        .alu_result(alu_result),
-//        .read_data2(read_data2),
-//        .mem_read(mem_read),
-//        .mem_write(mem_write),
-//        .zero(zero),
-//        .branch(branch),
-//        .uncondbranch(uncond_branch),
-//        .read_data(read_data),
-//        .pc_src(pc_src));
+
+    iMemory memory_mod(
+        .im_clk(clk),
+        .pc_in(cur_pc_ie),
+        .pc_out(cur_pc_im),
+        .alu_result(alu_result_ie),
+        .read_data2(read_data2_ie),
+        .mem_read(mem_read_ie),
+        .mem_write(mem_write_ie),
+        .mem_to_reg_in(mem_to_reg_ie),
+        .mem_to_reg_out(mem_to_reg_im),
+        .zero(zero_ie),
+        .branch(branch_ie),
+        .uncondbranch(uncond_branch_ie),
+        .read_data(read_data_im),
+        .pc_src(pc_src_1));
                 
 //    iWrite_back writeback_m(
 //        .read_data(read_data),
@@ -124,8 +128,8 @@ module pipeline;
 initial
     begin
        reset = 1;
-       pc_src = 0;
        reg_write_iw = 0;
+       pc_src = 0;
        write_register_iw = 0;
        write_data_iw = 0; #5
        reset = 0; #40        
