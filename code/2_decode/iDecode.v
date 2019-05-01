@@ -22,6 +22,7 @@ module iDecode(
     
     wire reg2loc, read_clk;
     wire [4:0] read_reg2;
+    reg [`INSTR_LEN-1:0] instruction_buffered;
     reg write_register_buffered, reg_write_buffered;
 
     always @(posedge write_clk)
@@ -31,11 +32,12 @@ module iDecode(
         write_register_out <= instruction[4:0];
         write_register_buffered <= write_register_in;
         reg_write_buffered <= reg_write_in;
+        instruction_buffered <= instruction;
     end
     
     delay #(.DELAYAMT(1)) read_delay(.a(write_clk), .a_delayed(read_clk));
     
-    control cont_mod(.instruction(instruction),
+    control cont_mod(.instruction(instruction_buffered),
                      .Reg2Loc(reg2loc),
                      .Branch(branch), 
                      .MemRead(mem_read), 
@@ -46,11 +48,11 @@ module iDecode(
                      .UncondBranch(uncond_branch), 
                      .ALUOp(ALU_op));
                      
-    sign_extender sign_ex(.Instruction(instruction), .Sign_Extended(sign_extended_output));
+    sign_extender sign_ex(.Instruction(instruction_buffered), .Sign_Extended(sign_extended_output));
     
-    mux #(.SIZE(5)) read_mux(.a_in(instruction[20:16]), .b_in(write_register_in), .control(reg2loc), .mux_out(read_reg2));
+    mux #(.SIZE(5)) read_mux(.a_in(instruction_buffered[20:16]), .b_in(write_register_buffered), .control(reg2loc), .mux_out(read_reg2));
     
-    regfile reg_mod(.read_register1(instruction[9:5]),
+    regfile reg_mod(.read_register1(instruction_buffered[9:5]),
                     .read_register2(read_reg2),
                     .write_register(write_register_buffered),
                     .RegWrite(reg_write_buffered),
