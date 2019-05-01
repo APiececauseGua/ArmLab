@@ -7,9 +7,8 @@ module iExecute(
     input  [4:0] write_register_in,
     input  [1:0]alu_op,
     input  alu_src, clk, reg_write_in, uncond_branch_in, branch_in, mem_read_in, mem_to_reg_in, mem_write_in,
-    output reg [`WORD-1:0]
-           alu_result,
-    output [`WORD-1:0] branch_target,
+    output [`WORD-1:0]
+           alu_result, branch_target,
     output reg [`WORD-1:0] 
            read_data2_out, pc_out,
     output reg [4:0] write_register_out,
@@ -25,7 +24,6 @@ module iExecute(
     reg [10:0] opcode_buffered;
     reg [1:0] alu_op_buffered;
     reg alu_src_buffered;
-    wire [`WORD-1:0] alu_result_buffered;
     
     always @(posedge clk)
         begin
@@ -43,7 +41,6 @@ module iExecute(
         mem_read_out <= mem_read_in;
         mem_to_reg_out <= mem_to_reg_in;
         mem_write_out <= mem_write_in;
-        alu_result <= alu_result_buffered;
         end
     
     mux MUX (
@@ -56,7 +53,7 @@ module iExecute(
         .a_in(read_data1_buffered),
         .b_in(mux_out),
         .alu_control(alu_ctrl_out),
-        .alu_result(alu_result_buffered),
+        .alu_result(alu_result),
         .zero_flag(zero)
         );
         

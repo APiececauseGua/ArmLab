@@ -1,38 +1,46 @@
 `include "definitions.vh"
 module iMemory(
-            input im_clk,
-            input uncondbranch,
-            input branch,  
-            input mem_read, 
-            input mem_write, 
-            input zero,
-            input [`WORD-1:0] pc_in,
-            input mem_to_reg_in,
-            input [`WORD-1:0] alu_result,
-            input [`WORD-1:0] read_data2,
-            input reg_write_in,
-            output reg reg_write_out,
-            output pc_src,
-            output reg [`WORD-1:0] pc_out,
-            output reg mem_to_reg_out,
-            output [`WORD-1:0] read_data);
+    input  [`WORD-1:0]
+           pc_in, alu_result, read_data2,
+    input  im_clk, uncond_branch,
+           branch, mem_read,
+           mem_write, zero,
+           mem_to_reg_in, reg_write_in,
+    output reg [`WORD-1:0] pc_out,
+           output [`WORD-1:0] read_data,
+    output reg reg_write_out, mem_to_reg_out,
+    output pc_src);
             
-            wire and_zero;
-            always @(posedge im_clk)
-            begin
-                pc_out <= pc_in;
-                mem_to_reg_out <= mem_to_reg_in;
-                reg_write_out <= reg_write_in;
-            end
-            
-            assign and_zero = (branch & zero);
-            assign pc_src = (uncondbranch | and_zero);
-            
-        data_mem DM(.im_clk(im_clk), 
-                    .mem_write(mem_write), 
-                    .mem_read(mem_read),
-                    .read_data2(read_data2), 
-                    .alu_result(alu_result),
-                    .read_data(read_data));
+    wire and_zero, delayed_clk;
+    reg uncond_branch_buffered, branch_buffered,
+        mem_read_buffered, mem_write_buffered,
+        zero_buffered;
+    reg [`WORD-1:0] alu_result_buffered, read_data2_buffered;
+        
+        delay #(.DELAYAMT(1)) Mem_Delay(.a(im_clk), .a_delayed(delayed_clk));
+        
+    always @(posedge im_clk)
+    begin
+        pc_out <= pc_in;
+        mem_to_reg_out <= mem_to_reg_in;
+        reg_write_out <= reg_write_in;
+        uncond_branch_buffered <= uncond_branch;
+        branch_buffered <= branch;
+        mem_read_buffered <= mem_read;
+        mem_write_buffered <= mem_write;
+        read_data2_buffered <= read_data2;
+        alu_result_buffered <= alu_result;
+        zero_buffered <= zero;
+    end
+    
+    assign and_zero = (branch_buffered & zero_buffered);
+    assign pc_src = (uncond_branch_buffered | and_zero);
+    
+    data_mem DM(.im_clk(delayed_clk), 
+                .mem_write(mem_write_buffered), 
+                .mem_read(mem_read_buffered),
+                .read_data2(read_data2_buffered), 
+                .alu_result(alu_result_buffered),
+                .read_data(read_data));
 
 endmodule
