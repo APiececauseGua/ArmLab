@@ -70,5 +70,4 @@ module iExecute(
         .b_in(shift_result),
         .add_out(branch_target)
         );
-
 endmodule
