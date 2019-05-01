@@ -10,6 +10,8 @@ module iMemory(
             input mem_to_reg_in,
             input [`WORD-1:0] alu_result,
             input [`WORD-1:0] read_data2,
+            input reg_write_in,
+            output reg reg_write_out,
             output pc_src,
             output reg [`WORD-1:0] pc_out,
             output reg mem_to_reg_out,
@@ -20,6 +22,7 @@ module iMemory(
             begin
                 pc_out <= pc_in;
                 mem_to_reg_out <= mem_to_reg_in;
+                reg_write_out <= reg_write_in;
             end
             
             assign and_zero = (branch & zero);

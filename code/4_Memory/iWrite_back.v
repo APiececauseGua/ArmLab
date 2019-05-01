@@ -9,11 +9,12 @@ module iWrite_back(
                    input reg_write_in, 
                    output reg [`WORD-1:0] pc_out,
                    output [`WORD-1:0] write_data,
-                   output reg_write_out);
+                   output reg reg_write_out);
                    
                    always @(posedge iw_clk)
                    begin
                        pc_out <= pc_in;
+                       reg_write_out <= reg_write_in;
                    end
                    
     mux WB (.a_in(alu_result),

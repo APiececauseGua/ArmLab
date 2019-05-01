@@ -107,6 +107,8 @@ module pipeline;
         .mem_write(mem_write_ie),
         .mem_to_reg_in(mem_to_reg_ie),
         .mem_to_reg_out(mem_to_reg_im),
+        .reg_write_in(reg_write_ie),
+        .reg_write_out(reg_write_im),
         .zero(zero_ie),
         .branch(branch_ie),
         .uncondbranch(uncond_branch_ie),
