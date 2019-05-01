@@ -111,7 +111,7 @@ module pipeline;
         .reg_write_out(reg_write_im),
         .zero(zero_ie),
         .branch(branch_ie),
-        .uncondbranch(uncond_branch_ie),
+        .uncond_branch(uncond_branch_ie),
         .read_data(read_data_im),
         .pc_src(pc_src_1));
                 
@@ -120,7 +120,7 @@ module pipeline;
         .read_data(read_data_im),
         .alu_result(alu_result_ie), 
         .MemtoReg(mem_to_reg_im), 
-        .write_data(read_data2_ie),
+        .write_data(write_data_iw),
         .pc_in(cur_pc_im),
         .reg_write_in(reg_write_im),
         .reg_write_out(reg_write_iw),
@@ -131,7 +131,7 @@ initial
        reset = 1;
        pc_src = 0;
        write_register_iw = 0;#5
-       reset = 0; #40        
+       reset = 0; #100        
    $finish;
     end
   
