@@ -2,7 +2,7 @@
 
 module pipeline;
     
-    reg reset,pc_src;
+    reg reset, pc_src;
     wire [`INSTR_LEN-1:0] instruction_if;
     wire uncond_branch_id, uncond_branch_ie,
          branch_id, branch_ie,
@@ -11,32 +11,26 @@ module pipeline;
          mem_write_id, mem_write_ie,
          reg_write_id, reg_write_ie,
          ALU_src_id, clk,
-         zero_ie, mem_to_reg_im, pc_src_1;
-         // Future 
-         /*  
-          
-         reg_write_im, reg_write_iw,*/
+         zero_ie, mem_to_reg_im, pc_src_1,
+         reg_write_im, reg_write_iw;
     wire [1:0] ALU_op_id;
     wire [4:0] write_register_id, write_register_ie;
          // Future
          /* write_register_im,
          write_register_iw*/
     wire [`WORD-1:0]
-         cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im,
+         cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im, cur_pc_iw,
          read_data1_id,
          read_data2_id, read_data2_ie,
          sign_extended_output_id,
          alu_result_ie,
          branch_target,
-         read_data_im;
-         // Future
-         /*  write_data_iw*/
+         read_data_im,
+         write_data_iw;
     wire [10:0] opcode_id;
-    
     // Temporary Registers for Simulation
-    reg reg_write_iw;
+
     reg [4:0] write_register_iw;
-    reg [`WORD-1:0] write_data_iw;
     
     // Base Clock
     oscillator r_clk(.clk(clk));
@@ -119,19 +113,22 @@ module pipeline;
         .read_data(read_data_im),
         .pc_src(pc_src_1));
                 
-//    iWrite_back writeback_m(
-//        .read_data(read_data),
-//        .alu_result(alu_result), 
-//        .MemtoReg(mem_to_reg), 
-//        .write_data(write_data));
+    iWrite_back writeback_m(
+        .iw_clk(clk),
+        .read_data(read_data_im),
+        .alu_result(alu_result_ie), 
+        .MemtoReg(mem_to_reg_im), 
+        .write_data(read_data2_ie),
+        .pc_in(cur_pc_im),
+        .reg_write_in(reg_write_im),
+        .reg_write_out(reg_write_iw),
+        .pc_out(cur_pc_iw));
                               
 initial
     begin
        reset = 1;
-       reg_write_iw = 0;
        pc_src = 0;
-       write_register_iw = 0;
-       write_data_iw = 0; #5
+       write_register_iw = 0;#5
        reset = 0; #40        
    $finish;
     end
