@@ -46,7 +46,7 @@ module iExecute(
     mux MUX (
         .a_in(read_data2_out),
         .b_in(sign_extend_buffered), 
-        .control(alu_src), 
+        .control(alu_src_buffered), 
         .mux_out(mux_out));
     
     ALU alu(
