@@ -130,7 +130,7 @@ initial
     begin
        reset = 1;
        pc_src = 0;#5
-       reset = 0; #135
+       reset = 0; #140
    $finish;
     end
   

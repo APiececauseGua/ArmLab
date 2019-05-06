@@ -19,13 +19,13 @@
 
 
 \author{Jiasen Zhou and Jon Johnston}
-\title{Lab 13}
+\title{Lab 13: Pipelining with Branching or Forwarding}
 
 \begin{document}
 \maketitle
 
 \section{Executive Summary}
-The goal of the lab is adding the register buffers between each stage and get a simple pipeline working and then implement the 10 instruction (NOP doesn't count in). In this lab, the iFetch, iDecode, iExecute, Memory and Writeak stages are all connected together. the pipeline buffers are added between each stage based on the buffer table.NOP instruction are added because there is no dataforwarding and hazard detection. The lab was successful.
+The purpose of this lab was to add the register buffers between each stage and ultimately to get a barebones pipelined datapath working. The iFetch, iDecode, iExecute, iMemory and iWriteback stages were all connected together with buffers placed at the beginning of each module to ensure data would be passed at the correct time. This pipeline was tested with the 10 test instructions, excluding NOPs added between some instructions. 4 NOPs were added after 6 of the instructions since the datapath did not have data forwarding or hazard detection, so the datapath must wait until the writeback stage to continue operation. After comparing the results of the simulation against the expected results, this lab was successful.
 
 
 \section{Test Report}
@@ -41,31 +41,26 @@ The Pipeline Test Bench contains:
 		\item branch\_target - branch address
 		\item pc\_src - the control of branch mux
 		\item reset - set the current pc to be 0
-		
-	\end{enumerate}	
-	\item Outputs
-	\begin{enumerate}	
-		\item  control signals that stored in buffer 
 	\end{enumerate}	
 \end{enumerate} 
 \pagebreak
 
 \begin{figure}[H]
 		\begin{center}
-		\caption{Piepline buffer table.}\label{fig:ert_registertest}
+		\caption{Pipeline buffer table.}\label{fig:ert_pipelinebuffer}
 		\includegraphics[width=1.0\textwidth]{../images/Lab12_pipelined_datapath_table.png}
 	\end{center}
 \end{figure}
 \begin{figure}[H]
 	\begin{center}
-		\caption{Expected Results of the pipeline test.}\label{fig:ert_registertest}
+		\caption{Expected Results of the pipeline test.}\label{fig:ert_pipelinetest}
 		\includegraphics[width=1.0\textwidth]{../images/Lab13_pipeline_table.png}
 	\end{center}
 \end{figure}
 
 \begin{figure}[H]
 	\begin{center}
-		\caption{Timing diagram for the pipeline test.}\label{fig:registertest}
+		\caption{Timing diagram for the pipeline test.}\label{fig:pipelinetest}
 		\includegraphics[width=1.0\textwidth]{../images/Lab13_pipeline_timing_diagram.png}
 	\end{center}
 \end{figure}
@@ -73,6 +68,6 @@ The Pipeline Test Bench contains:
 
 \section{Code Appendix}
 % The code appendix should include the test bench code and module code for this lab.
-\Verilog{Verilog code of piepline.}{code:regtest}{../code/2_decode/pipeline_datapath.v}
+\Verilog{Verilog code of pipeline.}{code:pipelinetest}{../code/2_decode/pipeline_datapath.v}
 
 \end{document} 

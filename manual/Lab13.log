@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2019.5.5)  5 MAY 2019 21:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2019.5.5)  5 MAY 2019 22:33
 entering extended mode
 **./Lab13.tex
 (Lab13.tex
@@ -87,11 +87,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@floatcapt=\box29
 )
 Package color Info: Redefining color blue on input line 9.
- (Lab13.aux
-
-LaTeX Warning: Label `fig:ert_registertest' multiply defined.
-
-)
+ (Lab13.aux)
 \openout1 = `Lab13.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
@@ -106,7 +102,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count96
 \scratchdimen=\dimen109
@@ -180,26 +177,27 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 25.
  [1
 
-{C:/Users/zhouj/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<../images/Lab12_pipelined_datapath_table.png, id=9, 1136.74687pt x 395.22656pt
+{C:/Users/JohnstonJ.ECS/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<../images/Lab12_pipelined_datapath_table.png, id=9, 1135.99406pt x 441.14813pt
 >
 File: ../images/Lab12_pipelined_datapath_table.png Graphic file (type png)
 <use ../images/Lab12_pipelined_datapath_table.png>
 Package pdftex.def Info: ../images/Lab12_pipelined_datapath_table.png  used on 
-input line 56.
-(pdftex.def)             Requested size: 345.0pt x 119.94989pt.
-<../images/Lab13_pipeline_table.png, id=11, 1081.03876pt x 319.94531pt>
+input line 51.
+(pdftex.def)             Requested size: 345.0pt x 133.97444pt.
+<../images/Lab13_pipeline_table.png, id=11, 1079.53313pt x 331.99031pt>
 File: ../images/Lab13_pipeline_table.png Graphic file (type png)
 <use ../images/Lab13_pipeline_table.png>
 Package pdftex.def Info: ../images/Lab13_pipeline_table.png  used on input line
- 62.
-(pdftex.def)             Requested size: 345.0pt x 102.10631pt.
-<../images/Lab13_pipeline_timing_diagram.png, id=12, 939.51pt x 364.36125pt>
+ 57.
+(pdftex.def)             Requested size: 345.0pt x 106.09721pt.
+<../images/Lab13_pipeline_timing_diagram.png, id=12, 1211.27531pt x 615.0478pt>
+
 File: ../images/Lab13_pipeline_timing_diagram.png Graphic file (type png)
 <use ../images/Lab13_pipeline_timing_diagram.png>
 Package pdftex.def Info: ../images/Lab13_pipeline_timing_diagram.png  used on i
-nput line 69.
-(pdftex.def)             Requested size: 345.0pt x 133.79411pt.
+nput line 64.
+(pdftex.def)             Requested size: 345.0pt x 175.17783pt.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -209,46 +207,35 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
 File: lstlang3.sty 2015/06/04 1.6 listings language file
-)
-(../code/2_decode/pipeline_datapath.v [2 <../images/Lab12_pipelined_datapath_ta
-ble.png> <../images/Lab13_pipeline_table.png> <../images/Lab13_pipeline_timing_
-diagram.png>]
+) [2 <../images/Lab12_pipelined_datapath_table.png> <../images/Lab13_pipeline_t
+able.png> <../images/Lab13_pipeline_timing_diagram.png>] (../code/2_decode/pipe
+line_datapath.v
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 6.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 19.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 19.
 
-Overfull \hbox (33.00385pt too wide) in paragraph at lines 22--23
+Overfull \hbox (33.00385pt too wide) in paragraph at lines 20--21
 [][][][][][][][][][][][][][][][][] 
  []
 
-[3] [4] [5]) [6] (Lab13.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[3] [4] [5]) [6] (Lab13.aux) ) 
 Here is how much of TeX's memory you used:
- 3190 strings out of 493308
- 46751 string characters out of 3138769
- 145995 words of memory out of 3000000
- 6706 multiletter control sequences out of 15000+200000
+ 3178 strings out of 493308
+ 46558 string characters out of 3138745
+ 146976 words of memory out of 3000000
+ 6697 multiletter control sequences out of 15000+200000
  8241 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,43p,461b,1635s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmti10.pfb>
-Output written on Lab13.pdf (6 pages, 202371 bytes).
+ 41i,6n,43p,739b,1635s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Lab13.pdf (6 pages, 235493 bytes).
 PDF statistics:
  56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
