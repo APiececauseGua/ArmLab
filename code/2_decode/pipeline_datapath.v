@@ -14,23 +14,18 @@ module pipeline;
          zero_ie, mem_to_reg_im, pc_src_1,
          reg_write_im, reg_write_iw;
     wire [1:0] ALU_op_id;
-    wire [4:0] write_register_id, write_register_ie;
-         // Future
-         /* write_register_im,
-         write_register_iw*/
+    wire [4:0] write_register_id, write_register_ie,
+         write_register_im, write_register_iw;
     wire [`WORD-1:0]
          cur_pc_if, cur_pc_id, cur_pc_ie, cur_pc_im, cur_pc_iw,
          read_data1_id,
          read_data2_id, read_data2_ie,
          sign_extended_output_id,
-         alu_result_ie,
+         alu_result_ie, alu_result_im,
          branch_target,
          read_data_im,
          write_data_iw;
     wire [10:0] opcode_id;
-    // Temporary Registers for Simulation
-
-    reg [4:0] write_register_iw;
     
     // Base Clock
     oscillator r_clk(.clk(clk));
@@ -101,12 +96,15 @@ module pipeline;
         .im_clk(clk),
         .pc_in(cur_pc_ie),
         .pc_out(cur_pc_im),
-        .alu_result(alu_result_ie),
+        .alu_result_in(alu_result_ie),
+        .alu_result_out(alu_result_im),
         .read_data2(read_data2_ie),
         .mem_read(mem_read_ie),
         .mem_write(mem_write_ie),
         .mem_to_reg_in(mem_to_reg_ie),
         .mem_to_reg_out(mem_to_reg_im),
+        .write_register_in(write_register_ie),
+        .write_register_out(write_register_im),
         .reg_write_in(reg_write_ie),
         .reg_write_out(reg_write_im),
         .zero(zero_ie),
@@ -118,10 +116,12 @@ module pipeline;
     iWrite_back writeback_m(
         .iw_clk(clk),
         .read_data(read_data_im),
-        .alu_result(alu_result_ie), 
+        .alu_result(alu_result_im), 
         .MemtoReg(mem_to_reg_im), 
         .write_data(write_data_iw),
         .pc_in(cur_pc_im),
+        .write_register_in(write_register_im),
+        .write_register_out(write_register_iw),
         .reg_write_in(reg_write_im),
         .reg_write_out(reg_write_iw),
         .pc_out(cur_pc_iw));
@@ -129,9 +129,8 @@ module pipeline;
 initial
     begin
        reset = 1;
-       pc_src = 0;
-       write_register_iw = 0;#5
-       reset = 0; #100        
+       pc_src = 0;#5
+       reset = 0; #135
    $finish;
     end
   

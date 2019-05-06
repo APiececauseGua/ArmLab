@@ -3,9 +3,11 @@
 module iWrite_back(
     input  [`WORD-1:0] 
            read_data, alu_result, pc_in,
+    input  [4:0] write_register_in,
     input  iw_clk, MemtoReg, reg_write_in,
     output reg [`WORD-1:0] pc_out,
     output [`WORD-1:0] write_data,
+    output reg [4:0] write_register_out,
     output reg reg_write_out);
 
     reg [`WORD-1:0] read_data_buffered, alu_result_buffered;
@@ -14,6 +16,7 @@ module iWrite_back(
     always @(posedge iw_clk)
     begin
        pc_out <= pc_in;
+       write_register_out <= write_register_in;
        reg_write_out <= reg_write_in;
        read_data_buffered <= read_data;
        alu_result_buffered <= alu_result;

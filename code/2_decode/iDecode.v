@@ -22,8 +22,10 @@ module iDecode(
     
     wire reg2loc, read_clk;
     wire [4:0] read_reg2;
+    reg [`WORD-1:0] write_data_buffered;
     reg [`INSTR_LEN-1:0] instruction_buffered;
-    reg write_register_buffered, reg_write_buffered;
+    reg [4:0] write_register_buffered;
+    reg reg_write_buffered;
 
     always @(posedge write_clk)
     begin
@@ -33,6 +35,7 @@ module iDecode(
         write_register_buffered <= write_register_in;
         reg_write_buffered <= reg_write_in;
         instruction_buffered <= instruction;
+        write_data_buffered <= write_data;
     end
     
     delay #(.DELAYAMT(1)) read_delay(.a(write_clk), .a_delayed(read_clk));
@@ -58,7 +61,7 @@ module iDecode(
                     .RegWrite(reg_write_buffered),
                     .read_clk(read_clk),
                     .write_clk(write_clk),
-                    .write_data(write_data),
+                    .write_data(write_data_buffered),
                     .read_data1(read_data1),
                     .read_data2(read_data2));
 endmodule
